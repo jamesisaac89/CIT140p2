@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programming Project2</title> 
+    </style>
+    <script>
+        function calculateTax() {
+
+            const income = parseFloat(document.getElementById("income").value);
+            let tax = 0;
+            
+            if (isNaN(income) || income < 0) {
+                document.getElementById("taxResult").value = "Please enter a valid positive number.";
+                return;
+            }
+
+            if (income < 27050) {
+                tax = 0.15 * income;
+            } else if (income < 65550) {
+                tax = 4057.50 + 0.275 * (income - 27050);
+            } else if (income < 136750) {
+                tax = 14654.00 + 0.305 * (income - 65550);
+            } else if (income < 297350) {
+                tax = 36361.00 + 0.355 * (income - 136750);
+            } else { // income >= 297350
+                tax = 93374.00 + 0.391 * (income - 297350);
+            }
+
+            
+            document.getElementById("taxResult").value = tax.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Tax Calculator</h1>
+    <label for="income">Input your income:</label>
+    <input type="text" id="income" />
+
+    <button onclick="calculateTax()">Calculate Tax</button>
+    <br>
+    <label for="taxResult">Tax to be paid:</label>
+    <input type="text" id="taxResult" />
+</body>
+</html>
